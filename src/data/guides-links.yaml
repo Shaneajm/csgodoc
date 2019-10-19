@@ -1,0 +1,10 @@
+- title: Guides
+  key: guides
+  breadcrumbTitle: Guides
+  items:
+    - title: Introduction
+      link: /guides/
+    - title: Maps
+      link: /guides/start-here
+    - title: Fails
+      link: /guides/fails/collection
