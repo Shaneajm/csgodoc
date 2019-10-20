@@ -24,6 +24,36 @@ for (let b in bp) {
   breakpointsTokens.push(bp[b]);
 }
 
+const theme = {
+  colors: {
+    primary: "#5026a7",
+    purple: {
+      5: hex2rgba("#5026a7", 0.05),
+      10: hex2rgba("#5026a7", 0.1),
+      20: hex2rgba("#5026a7", 0.2),
+      30: hex2rgba("#5026a7", 0.3),
+      40: hex2rgba("#5026a7", 0.4),
+      50: hex2rgba("#5026a7", 0.5),
+      60: hex2rgba("#5026a7", 0.6),
+      70: hex2rgba("#5026a7", 0.7),
+      80: hex2rgba("#5026a7", 0.8),
+      90: hex2rgba("#5026a7", 0.9)
+    },
+    grey: {
+      5: "#fbfbfb",
+      10: "#f5f5f5",
+      20: "#f0f0f2",
+      30: "#d9d7e0",
+      40: "#b7b5bd",
+      50: "#78757a",
+      60: "#635e69",
+      70: "#48434f",
+      80: "#36313d",
+      90: "#232129"
+    }
+  }
+};
+
 // remove the first breakpoint, `xxs: 0`
 // this made sense for styled-system and using an object
 // to define breakpoints, but not here
@@ -48,7 +78,7 @@ const lineHeightsTokens = {
 };
 
 const darkBackground = `#131217`; // meh
-const darkBorder = c.grey[90];
+const darkBorder = theme.colors.grey[90];
 // const darkBackground = c.purple[90]
 // const darkBorder = c.purple[80]
 const shadowDarkBase = `19,18,23`;
@@ -70,19 +100,19 @@ const col = {
   // Body foreground color
   // overwrite what's currently in `colors` from `gatsby-design-tokens`
   // also see `heading` key below
-  text: c.grey[80], // c.text.primary
+  text: theme.colors.grey[80],
   // Body background color
   background: c.white,
   // Primary brand color for links, buttons, etc.
-  primary: c.gatsby,
+  primary: theme.colors.primary,
   // A secondary brand color for alternative styling
-  secondary: c.purple[40],
+  secondary: theme.colors.purple[40],
   // A contrast color for emphasizing UI
   accent: c.orange[60],
   // A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
-  muted: c.grey[5],
+  muted: theme.colors.grey[5],
   // end Theme-UI required keys
-  banner: c.blue[70],
+  banner: theme.colors.primary,
   // gatsby-design-tokens has the following in colors.text,
   // which conflicts with theme-ui's default color `text`
   // making text.header and text.secondary available as
@@ -114,44 +144,44 @@ const col = {
     cssString: `#a2466c`,
     invisibles: `#e0d7d1`,
     // add a bunch of UI colors
-    copyButton: c.grey[60],
+    copyButton: theme.colors.grey[60],
     lineHighlightBackground: `#fbf0ea`,
     scrollbarTrack: `#faede5`
   },
   ui: {
-    background: c.grey[5],
-    hover: c.purple[5],
-    border: c.grey[20]
+    background: theme.colors.grey[5],
+    hover: theme.colors.purple[5],
+    border: theme.colors.grey[20]
   },
   link: {
-    color: `#32C484`,
-    border: c.purple[30],
-    hoverBorder: c.purple[50],
-    hoverColor: c.purple[60]
+    color: theme.colors.purple[70],
+    border: theme.colors.purple[30],
+    hoverBorder: theme.colors.purple[50],
+    hoverColor: theme.colors.purple[60]
   },
   icon: {
-    dark: c.purple[60],
-    neutral: c.grey[50],
-    neutralLight: c.grey[30],
+    dark: theme.colors.purple[60],
+    neutral: theme.colors.grey[50],
+    neutralLight: theme.colors.grey[30],
     background: c.white,
     accent: c.yellow[60],
-    light: c.purple[10],
-    lightActive: c.purple[20]
+    light: theme.colors.purple[10],
+    lightActive: theme.colors.purple[20]
   },
   input: {
     background: c.white,
     backgroundFocus: c.white,
-    border: c.grey[30],
+    border: theme.colors.grey[30],
     focusBorder: c.white,
-    focusBoxShadow: c.purple[60],
-    icon: c.grey[50],
-    iconFocus: c.grey[60],
+    focusBoxShadow: theme.colors.purple[60],
+    icon: theme.colors.grey[50],
+    iconFocus: theme.colors.grey[60],
     placeholder: c.text.placeholder
   },
   // new tokens
   card: {
     background: c.white,
-    color: c.grey[50],
+    color: theme.colors.grey[50],
     header: c.black,
     starterLabelBackground: c.teal[5],
     starterLabelText: c.teal[70],
@@ -164,30 +194,30 @@ const col = {
   },
   navigation: {
     background: hex2rgba(c.white, 0.985),
-    linkDefault: c.grey[70],
-    linkActive: c.purple[50],
-    linkHover: c.gatsby,
-    socialLink: c.grey[40]
+    linkDefault: theme.colors.grey[70],
+    linkActive: theme.colors.purple[80],
+    linkHover: theme.colors.primary,
+    socialLink: theme.colors.grey[40]
   },
   search: {
     suggestionHighlightBackground: c.lavender,
     suggestionHighlightColor: c.gatsby
   },
   sidebar: {
-    itemHoverBackground: hex2rgba(c.purple[20], 0.275),
+    itemHoverBackground: theme.colors.purple[10],
     itemBackgroundActive: `transparent`,
     itemBorderColor: `transparent`, // `rgba(0,0,0,0.05)`,
-    activeSectionBackground: hex2rgba(c.purple[20], 0.15),
-    itemBorderActive: c.purple[10]
+    activeSectionBackground: theme.colors.purple[5],
+    itemBorderActive: theme.colors.purple[10]
   },
   themedInput: {
-    background: c.grey[10],
+    background: theme.colors.grey[10],
     backgroundFocus: c.white,
-    focusBorder: c.purple[60],
-    focusBoxShadow: c.purple[30],
-    icon: c.grey[50],
-    iconFocus: c.grey[60],
-    placeholder: c.grey[60]
+    focusBorder: theme.colors.purple[60],
+    focusBoxShadow: theme.colors.purple[30],
+    icon: theme.colors.grey[50],
+    iconFocus: theme.colors.grey[60],
+    placeholder: theme.colors.grey[60]
   },
   widget: {
     background: c.white,
@@ -195,38 +225,37 @@ const col = {
   },
   newsletter: {
     background: c.white,
-    border: c.grey[10],
-    heading: c.grey[70],
+    border: theme.colors.grey[10],
+    heading: theme.colors.grey[70],
     stripeColorA: c.red[40],
     stripeColorB: c.blue[40]
   },
   button: {
-    primaryBg: c.purple[60],
+    primaryBg: theme.colors.purple[60],
     primaryText: c.white,
-    primaryBorder: c.purple[60],
+    primaryBorder: theme.colors.purple[60],
     secondaryBg: `transparent`,
-    secondaryText: c.purple[50],
-    secondaryBorder: c.purple[40]
+    secondaryText: theme.colors.purple[50],
+    secondaryBorder: theme.colors.purple[40]
   },
   modes: {
     dark: {
       background: darkBackground,
-      text: c.grey[30],
+      text: theme.colors.grey[30],
       heading: c.whiteFade[80],
-      textMuted: c.grey[40],
-      banner: hex2rgba(c.purple[90], 0.975),
-      muted: c.grey[90],
+      textMuted: theme.colors.grey[40],
+      muted: theme.colors.grey[90],
       icon: {
         dark: c.purple[50],
-        neutral: c.grey[70],
-        neutralLight: c.grey[90],
+        neutral: theme.colors.grey[70],
+        neutralLight: theme.colors.grey[90],
         background: c.darkBorder,
         accent: c.yellow[50],
-        light: c.grey[90],
+        light: theme.colors.grey[90],
         lightActive: c.purple[90]
       },
       card: {
-        background: c.grey[90],
+        background: theme.colors.grey[90],
         color: c.whiteFade[70],
         header: c.white,
         starterLabelBackground: hex2rgba(c.teal[90], 0.125),
@@ -242,15 +271,15 @@ const col = {
         // ui
         background: `#1b191f`, // another meh
         backgroundInline: darkBorder,
-        border: c.grey[90],
+        border: theme.colors.grey[90],
         lineHighlightBackground: hex2rgba(c.purple[90], 0.25),
         lineHighlightBorder: c.purple[90],
-        scrollbarThumb: c.grey[70],
-        scrollbarTrack: c.grey[90],
-        copyButton: c.grey[40],
+        scrollbarThumb: theme.colors.grey[70],
+        scrollbarTrack: theme.colors.grey[90],
+        copyButton: theme.colors.grey[40],
         // tokens
         add: c.green[50],
-        comment: c.grey[30],
+        comment: theme.colors.grey[30],
         cssString: c.orange[50],
         invisibles: `#e0d7d1`,
         keyword: c.magenta[30],
@@ -259,7 +288,7 @@ const col = {
         remove: c.red[40],
         selector: c.orange[30],
         tag: c.teal[60],
-        text: c.grey[30]
+        text: theme.colors.grey[30]
       },
       link: {
         border: `#7289DA`,
@@ -272,14 +301,14 @@ const col = {
         linkActive: c.purple[40],
         linkDefault: c.whiteFade[60],
         linkHover: c.white,
-        socialLink: c.grey[60]
+        socialLink: theme.colors.grey[60]
       },
       themedInput: {
         background: darkBorder,
         backgroundFocus: `black`,
         focusBorder: c.purple[60],
         focusBoxShadow: c.purple[60],
-        icon: c.grey[50],
+        icon: theme.colors.grey[50],
         iconFocus: c.purple[50],
         placeholder: c.whiteFade[50]
       },

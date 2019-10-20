@@ -4,8 +4,10 @@
   items:
     - title: Introduction
       link: /guides/
-    - title: Maps
-      link: /guides/maps/
+    - title: Inferno
+      link: /guides/inferno/
       items:
-        - title: Inferno
-          link: /guides/inferno/
+        - title: Counter Terrorist
+          link: /guides/inferno/counter-terrorist
+        - title: Terrorist
+          link: /guides/inferno/terrorist

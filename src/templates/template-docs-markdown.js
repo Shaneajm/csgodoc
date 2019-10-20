@@ -36,7 +36,8 @@ const getDocsData = location => {
 function DocsTemplate({ data, location, pageContext: { next, prev } }) {
   const page = data.mdx;
   const [urlSegment, itemList] = getDocsData(location);
-  const toc = page.tableOfContents.items;
+  const toc =
+    !page.frontmatter.disableTableOfContents && page.tableOfContents.items;
 
   return (
     <React.Fragment>
@@ -154,6 +155,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        tableOfContentsDepth
       }
       ...MarkdownPageFooterMdx
     }

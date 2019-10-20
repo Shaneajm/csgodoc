@@ -35,7 +35,13 @@ module.exports = {
       options: {
         extensions: [".md", ".mdx"],
         gatsbyRemarkPlugins: [
-          "gatsby-remark-embed-video",
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              related: false,
+              noIframeBorder: true
+            }
+          },
           {
             resolve: "gatsby-remark-images",
             options: {
@@ -74,7 +80,13 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          "gatsby-remark-embed-video",
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              related: false,
+              noIframeBorder: true
+            }
+          },
           {
             resolve: "gatsby-remark-images",
             options: {
