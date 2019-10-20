@@ -47,9 +47,7 @@ const Banner = () => (
     <InnerContainer>
       <Content>
         {`test`}
-        <OutboundLink href="https://www.gatsbyjs.com/preview">
-          Gatsby Preview
-        </OutboundLink>
+        <OutboundLink href="https://www.gatsbyjs.com/preview">1</OutboundLink>
       </Content>
     </InnerContainer>
   </aside>
