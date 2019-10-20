@@ -8,6 +8,7 @@ import { mediaQueries } from "../gatsby-plugin-theme-ui";
 
 import Layout from "../components/layout";
 import { itemListGuides } from "../utils/sidebar/item-list";
+import MarkdownPageFooter from "../components/markdown-page-footer";
 import DocSearchContent from "../components/docsearch-content";
 import TableOfContents from "../components/docs-table-of-contents";
 import FooterLinks from "../components/shared/footer-links";
@@ -16,11 +17,6 @@ import Container from "../components/container";
 import PrevAndNext from "../components/prev-and-next";
 
 const containerStyles = {
-  // we need to account for <Container>'s horizontal padding of
-  // `space[6]` each (1.5rem), plus add a fluffy `space[9]`
-  // of whitespace in between main content and TOC
-  //
-  // could be much cleaner/clearer, please feel free to improve 🙏
   maxWidth: t =>
     `calc(${t.sizes.mainContentWidth.withSidebar} + ${t.sizes.tocWidth} + ${
       t.space[9]
@@ -31,7 +27,7 @@ const containerStyles = {
 const getDocsData = location => {
   const [urlSegment] = location.pathname.split(`/`).slice(1);
   const itemListLookup = {
-    docs: itemListGuides
+    guides: itemListGuides
   };
 
   return [urlSegment, itemListLookup[urlSegment]];
@@ -40,8 +36,7 @@ const getDocsData = location => {
 function DocsTemplate({ data, location, pageContext: { next, prev } }) {
   const page = data.mdx;
   const [urlSegment, itemList] = getDocsData(location);
-  const toc =
-    !page.frontmatter.disableTableOfContents && page.tableOfContents.items;
+  const toc = page.tableOfContents.items;
 
   return (
     <React.Fragment>
@@ -73,7 +68,7 @@ function DocsTemplate({ data, location, pageContext: { next, prev } }) {
             }}
           >
             <Breadcrumb location={location} itemList={itemList} />
-            <h1 id={page.fields.slug} sx={{ mt: 0 }}>
+            <h1 id={page.fields.anchor} sx={{ mt: 0 }}>
               {page.frontmatter.title}
             </h1>
           </Container>
@@ -134,6 +129,7 @@ function DocsTemplate({ data, location, pageContext: { next, prev } }) {
                   </a>
                 )}
                 <PrevAndNext sx={{ mt: 9 }} prev={prev} next={next} />
+                <MarkdownPageFooter page={page} />
               </div>
             </div>
           </Container>
@@ -159,6 +155,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
+      ...MarkdownPageFooterMdx
     }
   }
 `;

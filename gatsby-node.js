@@ -1,6 +1,6 @@
 const _ = require(`lodash`);
 const Promise = require(`bluebird`);
-const path = require("path");
+const path = require(`path`);
 const fs = require(`fs-extra`);
 const slash = require(`slash`);
 const yaml = require(`js-yaml`);
@@ -51,7 +51,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           }, []);
         }
 
-        const flattenedGuidesDocs = flattenList(guidesLinks);
+        const flattenedGuides = flattenList(guidesLinks);
 
         // with flattened tree object finding next and prev is just getting the next index
         function getSibling(index, list, direction) {
@@ -97,13 +97,13 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           const slug = _.get(node, `fields.slug`);
           if (!slug) return;
 
-          const guidesIndex = flattenedGuidesDocs.findIndex(findDoc, {
+          const guidesIndex = flattenedGuides.findIndex(findDoc, {
             link: slug
           });
 
           // add values to page context for next and prev page
           let nextAndPrev = {};
-          addContextNextPrev(guidesIndex, flattenedGuidesDocs, nextAndPrev);
+          addContextNextPrev(guidesIndex, flattenedGuides, nextAndPrev);
 
           createPage({
             path: `${node.fields.slug}`, // required
@@ -119,6 +119,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
   });
 };
 
+// Create slugs for files, set released status for blog posts.
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;

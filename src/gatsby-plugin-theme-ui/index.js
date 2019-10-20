@@ -82,7 +82,7 @@ const col = {
   // A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
   muted: c.grey[5],
   // end Theme-UI required keys
-  banner: c.purple[70],
+  banner: c.blue[70],
   // gatsby-design-tokens has the following in colors.text,
   // which conflicts with theme-ui's default color `text`
   // making text.header and text.secondary available as
@@ -124,7 +124,7 @@ const col = {
     border: c.grey[20]
   },
   link: {
-    color: c.purple[50],
+    color: `#32C484`,
     border: c.purple[30],
     hoverBorder: c.purple[50],
     hoverColor: c.purple[60]
@@ -262,8 +262,8 @@ const col = {
         text: c.grey[30]
       },
       link: {
-        border: c.purple[90],
-        color: c.purple[40],
+        border: `#7289DA`,
+        color: `#7289DA`,
         hoverBorder: c.purple[70],
         hoverColor: c.purple[30]
       },

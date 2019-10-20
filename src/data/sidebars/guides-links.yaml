@@ -5,6 +5,7 @@
     - title: Introduction
       link: /guides/
     - title: Maps
-      link: /guides/start-here
-    - title: Fails
-      link: /guides/fails/collection
+      link: /guides/maps/
+      items:
+        - title: Inferno
+          link: /guides/inferno/

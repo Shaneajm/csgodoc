@@ -1,11 +1,11 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
-import { Helmet } from "react-helmet"
+import React from "react";
+import { graphql } from "gatsby";
+import { Link } from "gatsby";
+import { Helmet } from "react-helmet";
 
-import Layout from "../components/layout"
-import { colors, space, mediaQueries, fontWeights } from "../utils/presets"
-import Container from "../components/container"
+import Layout from "../components/layout";
+import { colors, space, mediaQueries, fontWeights } from "../utils/presets";
+import Container from "../components/container";
 
 class IndexRoute extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class IndexRoute extends React.Component {
             display: `flex`,
             flexDirection: `row`,
             flexWrap: `wrap`,
-            justifyContent: `space-between`,
+            justifyContent: `space-between`
           }}
         >
           <div css={{ flex: `1 1 100%` }}>
@@ -44,8 +44,8 @@ class IndexRoute extends React.Component {
           </div>
         </main>
       </Layout>
-    )
+    );
   }
 }
 
-export default IndexRoute
+export default IndexRoute;
