@@ -1,28 +1,28 @@
-import guidesSidebar from "../../data/guides-links.yaml"
+import guidesSidebar from "../../data/sidebars/guides-links.yaml";
 
 const createHash = link => {
-  let index = -1
-  if (link) index = link.indexOf(`#`)
-  return index >= 0 ? link.substr(index + 1) : false
-}
+  let index = -1;
+  if (link) index = link.indexOf(`#`);
+  return index >= 0 ? link.substr(index + 1) : false;
+};
 
 const extendItem = (items, parentTitle, level) => {
   items.forEach(item => {
-    item.hash = createHash(item.link)
-    item.parentTitle = parentTitle
-    item.level = level || 1
+    item.hash = createHash(item.link);
+    item.parentTitle = parentTitle;
+    item.level = level || 1;
 
-    if (item.items) extendItem(item.items, item.title, item.level + 1)
-  })
-}
+    if (item.items) extendItem(item.items, item.title, item.level + 1);
+  });
+};
 
 const extendItemList = itemList => {
   itemList.forEach(section => {
-    section.level = 0
-    if (section.items) extendItem(section.items, section.title)
-  })
-  return itemList
-}
+    section.level = 0;
+    if (section.items) extendItem(section.items, section.title);
+  });
+  return itemList;
+};
 
 const extendSidebarData = item => {
   return {
@@ -31,10 +31,10 @@ const extendSidebarData = item => {
     key: item[0].key,
     disableExpandAll: item[0].disableExpandAll,
     disableAccordions: item[0].disableAccordions,
-    items: extendItemList(item[0].items),
-  }
-}
+    items: extendItemList(item[0].items)
+  };
+};
 
-const itemListGuides = extendSidebarData(guidesSidebar)
+const itemListGuides = extendSidebarData(guidesSidebar);
 
-export { itemListGuides }
+export { itemListGuides };

@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+// import FeedbackWidget from "./feedback-widget/feedback-widget";
 
 export default ({ children }) => (
   <main
@@ -9,5 +10,6 @@ export default ({ children }) => (
     css={{ position: `relative` }}
   >
     {children}
+    {/* <FeedbackWidget /> */}
   </main>
-)
+);

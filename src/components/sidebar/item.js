@@ -1,17 +1,17 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from "react";
 
-import Accordion from "./accordion"
-import createLink from "../../utils/sidebar/create-link"
+import Accordion from "./accordion";
+import createLink from "../../utils/sidebar/create-link";
 
 const isItemActive = (activeItemParents, item) => {
   if (activeItemParents) {
     for (let parent of activeItemParents) {
-      if (parent === item.title) return true
+      if (parent === item.title) return true;
     }
   }
 
-  return false
-}
+  return false;
+};
 
 class Item extends React.PureComponent {
   render() {
@@ -26,10 +26,10 @@ class Item extends React.PureComponent {
       onSectionTitleClick,
       ui,
       isSingle,
-      disableAccordions,
-    } = this.props
+      disableAccordions
+    } = this.props;
 
-    const isParentOfActiveItem = isItemActive(activeItemParents, item)
+    const isParentOfActiveItem = isItemActive(activeItemParents, item);
 
     return (
       <Fragment>
@@ -61,13 +61,13 @@ class Item extends React.PureComponent {
               location,
               onLinkClick,
               ui,
-              level: item.level,
+              level: item.level
             })}
           </li>
         )}
       </Fragment>
-    )
+    );
   }
 }
 
-export default Item
+export default Item;

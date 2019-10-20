@@ -1,76 +1,74 @@
-import React from "react"
-import { navigate, PageRenderer } from "gatsby"
-import mousetrap from "mousetrap"
-import Modal from "react-modal"
-import { SkipNavLink } from "@reach/skip-nav"
-import MdClose from "react-icons/lib/md/close"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from "react";
+import { navigate, PageRenderer } from "gatsby";
+import mousetrap from "mousetrap";
+import Modal from "react-modal";
+import MdClose from "react-icons/lib/md/close";
+import { Global } from "@emotion/core";
 
-import {
-  colors,
-  radii,
-  space,
-  shadows,
-  sizes,
-  fontSizes,
-  zIndices,
-} from "../utils/presets"
-import { breakpointGutter } from "../utils/styles"
-import Banner from "../components/banner"
-import Navigation from "../components/navigation"
-import PageWithSidebar from "../components/page-with-sidebar"
-import SiteMetadata from "../components/site-metadata"
+import { globalStyles } from "../utils/styles/global";
+import { colors, space, zIndices } from "../gatsby-plugin-theme-ui";
+import { breakpointGutter } from "../utils/styles";
+import Banner from "../components/banner";
+import withColorMode from "../components/with-color-mode";
+import Navigation from "../components/navigation";
+import MobileNavigation from "../components/navigation-mobile";
+import PageWithSidebar from "../components/page-with-sidebar";
+import SiteMetadata from "../components/site-metadata";
+import SkipNavLink from "../components/skip-nav-link";
 
-import { skipLink } from "../utils/styles"
-
-let windowWidth
+let windowWidth;
 
 class DefaultLayout extends React.Component {
   constructor() {
-    super()
-    this.handleCloseModal = this.handleCloseModal.bind(this)
+    super();
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   handleCloseModal() {
-    navigate(this.props.modalBackgroundPath)
+    navigate(this.props.modalBackgroundPath);
   }
 
   componentDidMount() {
-    Modal.setAppElement(`#___gatsby`)
+    Modal.setAppElement(`#___gatsby`);
 
     if (this.props.isModal && window.innerWidth > 750) {
-      mousetrap.bind(`left`, this.props.modalPrevious)
-      mousetrap.bind(`right`, this.props.modalNext)
-      mousetrap.bind(`spacebar`, this.props.modalNext)
+      mousetrap.bind(`left`, this.props.modalPrevious);
+      mousetrap.bind(`right`, this.props.modalNext);
+      mousetrap.bind(`spacebar`, this.props.modalNext);
 
-      document.querySelector(`html`).style.overflowY = `hidden`
+      document.querySelector(`html`).style.overflowY = `hidden`;
     }
   }
 
   componentWillUnmount() {
     if (this.props.isModal && window.innerWidth > 750) {
-      mousetrap.unbind(`left`)
-      mousetrap.unbind(`right`)
-      mousetrap.unbind(`spacebar`)
+      mousetrap.unbind(`left`);
+      mousetrap.unbind(`right`);
+      mousetrap.unbind(`spacebar`);
 
-      document.querySelector(`html`).style.overflowY = `auto`
+      document.querySelector(`html`).style.overflowY = `auto`;
     }
   }
 
   render() {
     // SEE: template-docs-markdown for why this.props.isSidebarDisabled is here
     const isSidebarDisabled =
-      this.props.isSidebarDisabled || !this.props.itemList
-    let isModal = false
+      this.props.isSidebarDisabled || !this.props.itemList;
+    let isModal = false;
     if (!windowWidth && typeof window !== `undefined`) {
-      windowWidth = window.innerWidth
+      windowWidth = window.innerWidth;
     }
     if (this.props.isModal && windowWidth > 750) {
-      isModal = true
+      isModal = true;
     }
+    const isDark = this.props.colorMode[0] === `dark`;
 
     if (isModal && window.innerWidth > 750) {
       return (
         <>
+          <Global styles={globalStyles} />
           <PageRenderer
             location={{ pathname: this.props.modalBackgroundPath }}
           />
@@ -78,60 +76,62 @@ class DefaultLayout extends React.Component {
             isOpen={true}
             style={{
               content: {
-                top: `inherit`,
-                left: `inherit`,
-                right: `inherit`,
-                bottom: `inherit`,
-                margin: `0 auto`,
-                width: `750px`,
                 background: `none`,
                 border: `none`,
-                padding: `${space[8]} 0`,
+                bottom: `inherit`,
+                left: `inherit`,
+                margin: `0 auto`,
                 overflow: `visible`,
+                padding: `${space[8]} 0`,
+                right: `inherit`,
+                top: `inherit`,
+                width: `750px`
               },
               overlay: {
-                position: `absolute`,
-                top: 0,
-                left: 0,
-                right: 0,
+                backgroundColor: isDark
+                  ? colors.modes.dark.modal.overlayBackground
+                  : colors.modal.overlayBackground,
                 bottom: `unset`,
+                left: 0,
                 minHeight: `100%`,
                 minWidth: `100%`,
-                zIndex: zIndices.modal,
                 overflowY: `auto`,
-                backgroundColor: `rgba(255, 255, 255, 0.95)`,
-              },
+                position: `absolute`,
+                right: 0,
+                top: 0,
+                zIndex: zIndices.modal
+              }
             }}
             onRequestClose={() => navigate(this.props.modalBackgroundPath)}
             contentLabel="Site Details Modal"
           >
             <div
-              css={{
-                backgroundColor: colors.white,
-                borderRadius: radii[2],
-                boxShadow: shadows.dialog,
-                position: `relative`,
+              sx={{
+                bg: `card.background`,
+                borderRadius: 2,
+                boxShadow: `dialog`,
+                position: `relative`
               }}
             >
               <button
                 onClick={this.handleCloseModal}
-                css={{
-                  background: colors.white,
+                sx={{
+                  bg: `card.background`,
                   border: 0,
-                  borderRadius: radii[6],
-                  color: colors.text.secondary,
+                  borderRadius: 6,
+                  color: `textMuted`,
                   cursor: `pointer`,
-                  position: `absolute`,
-                  left: `auto`,
-                  right: space[7],
-                  top: space[8],
+                  fontSize: 4,
                   height: 40,
+                  left: `auto`,
+                  position: `absolute`,
+                  right: t => t.space[7],
+                  top: t => t.space[8],
                   width: 40,
-                  fontSize: fontSizes[4],
                   "&:hover": {
-                    background: colors.blue[5],
-                    color: colors.blue[90],
-                  },
+                    bg: `ui.hover`,
+                    color: `gatsby`
+                  }
                 }}
               >
                 <MdClose />
@@ -142,27 +142,28 @@ class DefaultLayout extends React.Component {
             </div>
           </Modal>
         </>
-      )
+      );
     }
 
     return (
       <>
+        <Global styles={globalStyles} />
         <SiteMetadata pathname={this.props.location.pathname} />
-        <SkipNavLink css={skipLink}>Skip to main content</SkipNavLink>
+        <SkipNavLink />
         <Banner />
         <Navigation pathname={this.props.location.pathname} />
         <div
-          className={`main-body`}
-          css={{
-            paddingLeft: `env(safe-area-inset-left)`,
-            paddingRight: `env(safe-area-inset-right)`,
-            paddingTop: sizes.bannerHeight,
+          className={`main-body docSearch-content`}
+          sx={{
+            px: `env(safe-area-inset-left)`,
+            pt: t => t.sizes.bannerHeight,
             // make room for the mobile navigation
-            paddingBottom: sizes.headerHeight,
+            pb: t => t.sizes.headerHeight,
             [breakpointGutter]: {
-              paddingTop: `calc(${sizes.bannerHeight} + ${sizes.headerHeight})`,
-              paddingBottom: 0,
-            },
+              pt: t =>
+                `calc(${t.sizes.bannerHeight} + ${t.sizes.headerHeight})`,
+              pb: 0
+            }
           }}
         >
           <PageWithSidebar
@@ -173,9 +174,10 @@ class DefaultLayout extends React.Component {
             renderContent={() => this.props.children}
           />
         </div>
+        <MobileNavigation />
       </>
-    )
+    );
   }
 }
 
-export default DefaultLayout
+export default withColorMode(DefaultLayout);
