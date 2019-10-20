@@ -46,7 +46,7 @@ const Banner = () => (
   >
     <InnerContainer>
       <Content>
-        {`Using Gatsby for your clients or team? Start 14-day free trial of `}
+        {`test`}
         <OutboundLink href="https://www.gatsbyjs.com/preview">
           Gatsby Preview
         </OutboundLink>
