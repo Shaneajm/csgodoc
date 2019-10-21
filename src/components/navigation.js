@@ -4,6 +4,7 @@ import { useColorMode } from "theme-ui";
 import { Link } from "gatsby";
 
 import logo from "../assets/logo.svg";
+import logoInverted from "../assets/logo-inverted.svg";
 import { mediaQueries } from "../gatsby-plugin-theme-ui";
 import { breakpointGutter } from "../utils/styles";
 import DarkModeToggle from "../components/dark-mode-toggle";
@@ -146,7 +147,7 @@ const Navigation = ({ pathname }) => {
           aria-label="Gatsby, Back to homepage"
         >
           <img
-            src={colorMode === `light` ? logo : logo}
+            src={colorMode === `light` ? logo : logoInverted}
             sx={{
               height: `logo`,
               width: `auto`,

@@ -11,7 +11,7 @@ const GA = {
 module.exports = {
   siteMetadata: {
     title: `csgodoc`,
-    siteUrl: `https://ad1-aau.netlify.com`,
+    siteUrl: `https://csgodoc.netlify.com`,
     description: `Most useful utilities for csgo`,
     twitter: ``
   },
@@ -123,11 +123,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `AAU Doc`,
-        short_name: `AAU Doc`,
+        name: `CSGO Doc`,
+        short_name: `CSGO Doc`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#0032FC`,
+        background_color: `#9147ff`,
+        theme_color: `#9147ff`,
         display: `standalone`,
         icon: `src/assets/csgodoc-icon.png`
       }
