@@ -58,8 +58,7 @@ class StickyResponsiveSidebar extends Component {
               maxWidth: `none`,
               opacity: `1 !important`,
               pointerEvents: `auto`,
-              top: t =>
-                `calc(${t.sizes.headerHeight} + ${t.sizes.bannerHeight})`,
+              top: t => `calc(${t.sizes.headerHeight})`,
               width: `sidebarWidth.default`
             },
             [mediaQueries.lg]: {

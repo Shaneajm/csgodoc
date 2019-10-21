@@ -88,7 +88,6 @@ const Navigation = ({ pathname }) => {
         px: `env(safe-area-inset-left)`,
         position: `relative`,
         right: 0,
-        top: t => t.sizes.bannerHeight,
         zIndex: `navigation`,
         // use this to test if the header items are properly aligned to the logo
         // wordmark

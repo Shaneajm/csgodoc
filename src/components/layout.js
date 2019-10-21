@@ -150,18 +150,15 @@ class DefaultLayout extends React.Component {
         <Global styles={globalStyles} />
         <SiteMetadata pathname={this.props.location.pathname} />
         <SkipNavLink />
-        <Banner />
         <Navigation pathname={this.props.location.pathname} />
         <div
           className={`main-body docSearch-content`}
           sx={{
             px: `env(safe-area-inset-left)`,
-            pt: t => t.sizes.bannerHeight,
             // make room for the mobile navigation
             pb: t => t.sizes.headerHeight,
             [breakpointGutter]: {
-              pt: t =>
-                `calc(${t.sizes.bannerHeight} + ${t.sizes.headerHeight})`,
+              pt: t => `calc(${t.sizes.headerHeight})`,
               pb: 0
             }
           }}
