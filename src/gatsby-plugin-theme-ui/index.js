@@ -26,18 +26,32 @@ for (let b in bp) {
 
 const theme = {
   colors: {
-    primary: "#5026a7",
+    accent: "#9147ff",
+    black: "#000000",
+    background: {
+      4: "#fff",
+      3: "#2f2f37",
+      2: "#212126",
+      1: "#18181b"
+    },
+    sidebar: {
+      background: "#212126"
+    },
+    navigation: {
+      background: "#18181B"
+    },
     purple: {
-      5: hex2rgba("#5026a7", 0.05),
-      10: hex2rgba("#5026a7", 0.1),
-      20: hex2rgba("#5026a7", 0.2),
-      30: hex2rgba("#5026a7", 0.3),
-      40: hex2rgba("#5026a7", 0.4),
-      50: hex2rgba("#5026a7", 0.5),
-      60: hex2rgba("#5026a7", 0.6),
-      70: hex2rgba("#5026a7", 0.7),
-      80: hex2rgba("#5026a7", 0.8),
-      90: hex2rgba("#5026a7", 0.9)
+      9: "#9147ff",
+      8: "#772ce8",
+      7: "#5c16c5",
+      6: "#451093",
+      3: "#1A1426"
+    },
+    text: {
+      linkHover: "#bf94ff"
+    },
+    link: {
+      active: `#bf94ff`
     },
     grey: {
       5: "#fbfbfb",
@@ -77,11 +91,9 @@ const lineHeightsTokens = {
   heading: lh.dense
 };
 
-const darkBackground = `#131217`; // meh
+const darkBackground = "#131217";
 const darkBorder = theme.colors.grey[90];
-// const darkBackground = c.purple[90]
-// const darkBorder = c.purple[80]
-const shadowDarkBase = `19,18,23`;
+const shadowDarkBase = `0,0,0`;
 const shadowDarkFlares = `0,0,0`;
 
 const fweights = {
@@ -104,15 +116,15 @@ const col = {
   // Body background color
   background: c.white,
   // Primary brand color for links, buttons, etc.
-  primary: theme.colors.primary,
+  primary: theme.colors.accent,
   // A secondary brand color for alternative styling
-  secondary: theme.colors.purple[40],
+  secondary: theme.colors.purple[9],
   // A contrast color for emphasizing UI
   accent: c.orange[60],
   // A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
   muted: theme.colors.grey[5],
   // end Theme-UI required keys
-  banner: theme.colors.primary,
+  banner: theme.colors.accent,
   // gatsby-design-tokens has the following in colors.text,
   // which conflicts with theme-ui's default color `text`
   // making text.header and text.secondary available as
@@ -150,30 +162,30 @@ const col = {
   },
   ui: {
     background: theme.colors.grey[5],
-    hover: theme.colors.purple[5],
+    hover: theme.colors.purple[6],
     border: theme.colors.grey[20]
   },
   link: {
-    color: theme.colors.purple[70],
-    border: theme.colors.purple[30],
-    hoverBorder: theme.colors.purple[50],
-    hoverColor: theme.colors.purple[60]
+    color: theme.colors.accent,
+    border: theme.colors.accent,
+    hoverBorder: theme.colors.accent,
+    hoverColor: theme.colors.accent
   },
   icon: {
-    dark: theme.colors.purple[60],
+    dark: theme.colors.purple[8],
     neutral: theme.colors.grey[50],
     neutralLight: theme.colors.grey[30],
     background: c.white,
     accent: c.yellow[60],
-    light: theme.colors.purple[10],
-    lightActive: theme.colors.purple[20]
+    light: theme.colors.purple[6],
+    lightActive: theme.colors.purple[7]
   },
   input: {
     background: c.white,
     backgroundFocus: c.white,
     border: theme.colors.grey[30],
     focusBorder: c.white,
-    focusBoxShadow: theme.colors.purple[60],
+    focusBoxShadow: theme.colors.purple[8],
     icon: theme.colors.grey[50],
     iconFocus: theme.colors.grey[60],
     placeholder: c.text.placeholder
@@ -195,8 +207,8 @@ const col = {
   navigation: {
     background: hex2rgba(c.white, 0.985),
     linkDefault: theme.colors.grey[70],
-    linkActive: theme.colors.purple[80],
-    linkHover: theme.colors.primary,
+    linkActive: theme.colors.purple[9],
+    linkHover: theme.colors.accent,
     socialLink: theme.colors.grey[40]
   },
   search: {
@@ -204,17 +216,18 @@ const col = {
     suggestionHighlightColor: c.gatsby
   },
   sidebar: {
-    itemHoverBackground: theme.colors.purple[10],
+    background: darkBackground,
+    itemHoverBackground: theme.colors.purple[6],
     itemBackgroundActive: `transparent`,
     itemBorderColor: `transparent`, // `rgba(0,0,0,0.05)`,
-    activeSectionBackground: theme.colors.purple[5],
-    itemBorderActive: theme.colors.purple[10]
+    activeSectionBackground: theme.colors.purple[6],
+    itemBorderActive: theme.colors.purple[9]
   },
   themedInput: {
     background: theme.colors.grey[10],
     backgroundFocus: c.white,
-    focusBorder: theme.colors.purple[60],
-    focusBoxShadow: theme.colors.purple[30],
+    focusBorder: theme.colors.purple[8],
+    focusBoxShadow: theme.colors.purple[6],
     icon: theme.colors.grey[50],
     iconFocus: theme.colors.grey[60],
     placeholder: theme.colors.grey[60]
@@ -231,12 +244,12 @@ const col = {
     stripeColorB: c.blue[40]
   },
   button: {
-    primaryBg: theme.colors.purple[60],
+    primaryBg: theme.colors.purple[8],
     primaryText: c.white,
-    primaryBorder: theme.colors.purple[60],
+    primaryBorder: theme.colors.purple[8],
     secondaryBg: `transparent`,
-    secondaryText: theme.colors.purple[50],
-    secondaryBorder: theme.colors.purple[40]
+    secondaryText: theme.colors.purple[7],
+    secondaryBorder: theme.colors.purple[6]
   },
   modes: {
     dark: {
@@ -291,13 +304,13 @@ const col = {
         text: theme.colors.grey[30]
       },
       link: {
-        border: `#7289DA`,
-        color: `#7289DA`,
-        hoverBorder: c.purple[70],
-        hoverColor: c.purple[30]
+        border: theme.colors.link.active,
+        color: theme.colors.link.active,
+        hoverBorder: theme.colors.accent,
+        hoverColor: theme.colors.accent
       },
       navigation: {
-        background: hex2rgba(darkBackground, 0.975),
+        background: darkBackground,
         linkActive: c.purple[40],
         linkDefault: c.whiteFade[60],
         linkHover: c.white,
@@ -317,11 +330,13 @@ const col = {
         dialog: `0px 4px 16px rgba(${shadowDarkBase}, 0.08), 0px 8px 24px rgba(${shadowDarkFlares}, 0.16)`,
         floating: `0px 2px 4px rgba(${shadowDarkBase}, 0.08), 0px 4px 8px rgba(${shadowDarkFlares}, 0.16)`,
         overlay: `0px 4px 8px rgba(${shadowDarkBase}, 0.08), 0px 8px 16px rgba(${shadowDarkFlares}, 0.16)`,
-        raised: `0px 1px 2px rgba(${shadowDarkBase}, 0.08), 0px 2px 4px rgba(${shadowDarkFlares}, 0.08)`
+        raised: `0px 1px 2px rgba(${shadowDarkBase}, 0.08), 0px 2px 4px rgba(${shadowDarkFlares}, 0.08)`,
+        elevation: `0 1px 2px rgba(${shadowDarkBase}, 0.5)`
       },
       sidebar: {
+        background: theme.colors.black,
         itemBackgroundActive: `transparent`,
-        activeSectionBackground: hex2rgba(c.purple[90], 0.2),
+        activeSectionBackground: theme.colors.purple[3],
         itemBorderActive: c.purple[80],
         itemBorderColor: `transparent`,
         itemHoverBackground: hex2rgba(c.purple[90], 0.2)
@@ -399,7 +414,7 @@ export const zIndices = z;
 const config = {
   // this enables the color modes feature
   // and is used as the name for the top-level colors object
-  initialColorModeName: `light`,
+  initialColorModeName: `dark`,
   // `prefers-color-scheme: dark` media query
   useColorSchemeMediaQuery: true,
   // borders: borders,

@@ -203,13 +203,14 @@ class SidebarBody extends Component {
         aria-label="Secondary Navigation"
         id="SecondaryNavigation"
         className="docSearch-sidebar"
-        sx={{ height: `100%` }}
+        sx={{
+          height: `100%`
+        }}
       >
         {!this.props.disableExpandAll && (
           <header
             sx={{
               alignItems: `center`,
-              bg: `background`,
               borderColor: `ui.border`,
               borderRightStyle: `solid`,
               borderRightWidth: `1px`,
@@ -239,7 +240,6 @@ class SidebarBody extends Component {
           ref={this.scrollRef}
           sx={{
             WebkitOverflowScrolling: `touch`,
-            bg: `background`,
             border: 0,
             display: `block`,
             overflowY: `auto`,
@@ -278,7 +278,6 @@ class SidebarBody extends Component {
               m: 0,
               py: 4,
               fontSize: 1,
-              bg: `background`,
               "& li": {
                 m: 0,
                 listStyle: `none`

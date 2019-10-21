@@ -82,9 +82,9 @@ const Navigation = ({ pathname }) => {
   return (
     <header
       sx={{
-        bg: `navigation.background`,
         height: `headerHeight`,
         left: 0,
+        bg: `navigation.background`,
         px: `env(safe-area-inset-left)`,
         position: `relative`,
         right: 0,

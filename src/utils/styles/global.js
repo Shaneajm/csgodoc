@@ -271,13 +271,13 @@ export const globalStyles = t => {
       color: t.colors.lilac
     },
     ".main-body a": {
-      color: t.colors.link.color,
+      color: `#bf94ff`,
       textDecoration: `none`,
       transition: `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
-      borderBottom: `1px solid ${t.colors.link.border}`
+      borderBottom: `1px solid #bf94ff`
     },
     ".main-body a:hover": {
-      borderBottomColor: t.colors.link.hoverBorder
+      borderBottomColor: `#9147ff`
     },
     ".post-body h1": {
       fontWeight: t.fontWeights.bold
