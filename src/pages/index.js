@@ -1,18 +1,17 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Link } from "gatsby";
 import { Helmet } from "react-helmet";
 
 import Layout from "../components/layout";
-import { colors, space, mediaQueries, fontWeights } from "../utils/presets";
 import Container from "../components/container";
+import HomepageGuides from "../components/homepage/homepage-guides"
 
 class IndexRoute extends React.Component {
   render() {
     return (
       <Layout location={this.props.location}>
         <Helmet>
-          <meta name="Description" content="meta desc" />
+          <meta name="Description" content="CSGO Doc" />
         </Helmet>
         <main
           id={`reach-skip-nav`}
@@ -25,23 +24,11 @@ class IndexRoute extends React.Component {
         >
           <div css={{ flex: `1 1 100%` }}>
             <Container withSidebar={false}>
-              <section>
-                <h1 css={{ fontWeight: fontWeights[1], marginTop: 0 }}>
-                  Welcome
-                </h1>
-                <ol>
-                  <li>
-                    links
-                    <ul>
-                      <li>
-                        <Link to="/guides/">Guides</Link>
-                      </li>
-                    </ul>
-                  </li>
-                </ol>
-              </section>
+
             </Container>
           </div>
+
+          <HomepageGuides />
         </main>
       </Layout>
     );
