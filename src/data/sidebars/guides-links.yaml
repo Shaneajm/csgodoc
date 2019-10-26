@@ -11,3 +11,10 @@
           link: /guides/inferno/counter-terrorist
         - title: Terrorist
           link: /guides/inferno/terrorist
+    - title: Train
+      link: /guides/train/
+      items:
+        - title: Counter Terrorist
+          link: /guides/train/counter-terrorist
+        - title: Terrorist
+          link: /guides/train/terrorist

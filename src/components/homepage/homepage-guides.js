@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "@emotion/styled"
-import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "@emotion/styled";
+import ArrowForwardIcon from "react-icons/lib/md/arrow-forward";
 
-import HomepageSection from "./homepage-section"
-import GuidesSection from "../guides/guides-section"
-import { GuidesIcon } from "../../assets/icons"
-import { mediaQueries } from "../../gatsby-plugin-theme-ui"
+import HomepageSection from "./homepage-section";
+import GuidesSection from "../guides/guides-section";
+import { GuidesIcon } from "../../assets/icons";
+import { mediaQueries } from "../../gatsby-plugin-theme-ui";
 
 const Sections = styled(`div`)`
   display: flex;
@@ -16,7 +16,7 @@ const Sections = styled(`div`)`
     flex-direction: row;
     margin: 0 -${p => p.theme.space[2]};
   }
-`
+`;
 
 const Section = styled(GuidesSection)`
   box-shadow: ${p => p.theme.shadows.raised};
@@ -32,7 +32,7 @@ const Section = styled(GuidesSection)`
       align-self: stretch;
     }
   }
-`
+`;
 
 const HomepageDocs = () => (
   <HomepageSection
@@ -44,40 +44,34 @@ const HomepageDocs = () => (
       {
         label: `Explore the Guides`,
         to: `/guides/`,
-        icon: ArrowForwardIcon,
-      },
+        icon: ArrowForwardIcon
+      }
     ]}
   >
     <Sections>
       <Section
         title="Inferno"
         description="Terrorists are attempting to blow up two critical gas pipelines through part of a small village. Counter-Terrorists: Prevent the terrorists from destroying the pipelines."
-        links={[
-          { label: `Browse Guides`, to: `/guides/inferno/` },
-        ]}
+        links={[{ label: `Browse Guides`, to: `/guides/inferno/` }]}
         onHomepage={true}
       />
 
       <Section
-        title="hello map 2"
+        title="Train"
         description="map description"
-        links={[
-          { label: `Browse Guides`, to: `/guides/` },
-        ]}
+        links={[{ label: `Browse Guides`, to: `/guides/train/` }]}
       />
       <Section
         title="hello map 3"
         description="map description"
-        links={[
-          { label: `Browse Guides`, to: `/guides/` },
-        ]}
+        links={[{ label: `Browse Guides`, to: `/guides/` }]}
       />
     </Sections>
   </HomepageSection>
-)
+);
 
 HomepageDocs.propTypes = {
-  featuredItems: PropTypes.array.isRequired,
-}
+  featuredItems: PropTypes.array.isRequired
+};
 
-export default HomepageDocs
+export default HomepageDocs;
