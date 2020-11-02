@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import ArrowForwardIcon from "react-icons/lib/md/arrow-forward";
 
@@ -14,7 +13,7 @@ const Sections = styled(`div`)`
 
   ${mediaQueries.md} {
     flex-direction: row;
-    margin: 0 -${p => p.theme.space[2]};
+    margin: 0 -${p => p.theme.space[2]} ${p => p.theme.space[4]};
   }
 `;
 
@@ -55,23 +54,35 @@ const HomepageDocs = () => (
         links={[{ label: `Browse Guides`, to: `/guides/inferno/` }]}
         onHomepage={true}
       />
-
       <Section
         title="Train"
         description="map description"
         links={[{ label: `Browse Guides`, to: `/guides/train/` }]}
       />
       <Section
-        title="hello map 3"
+        title="Mirage"
         description="map description"
-        links={[{ label: `Browse Guides`, to: `/guides/` }]}
+        links={[{ label: `Browse Guides`, to: `/guides/mirage/` }]}
+      />
+    </Sections>
+    <Sections>
+      <Section
+        title="Nuke"
+        description="map description"
+        links={[{ label: `Browse Guides`, to: `/guides/nuke/` }]}
+      />
+      <Section
+        title="Overpass"
+        description="map description"
+        links={[{ label: `Browse Guides`, to: `/guides/overpass/` }]}
+      />
+      <Section
+        title="Vertigo"
+        description="map description"
+        links={[{ label: `Browse Guides`, to: `/guides/vertigo/` }]}
       />
     </Sections>
   </HomepageSection>
 );
-
-HomepageDocs.propTypes = {
-  featuredItems: PropTypes.array.isRequired
-};
 
 export default HomepageDocs;

@@ -1,13 +1,13 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
-import PropTypes from "prop-types"
-import styled from "@emotion/styled"
+import { jsx } from "theme-ui";
+import PropTypes from "prop-types";
+import styled from "@emotion/styled";
 
-import Button from "../button"
-import { rhythm } from "../../utils/typography"
-import { mediaQueries } from "../../gatsby-plugin-theme-ui"
+import Button from "../button";
+import { rhythm } from "../../utils/typography";
+import { mediaQueries } from "../../gatsby-plugin-theme-ui";
 
-const ICON_SIZE = 7
+const ICON_SIZE = 7;
 
 export const Header = styled(`header`)`
   ${mediaQueries.md} {
@@ -17,7 +17,7 @@ export const Header = styled(`header`)`
   ${mediaQueries.lg} {
     margin-left: ${p => p.theme.space[9]};
   }
-`
+`;
 
 export const Name = styled(`h3`)`
   align-items: center;
@@ -32,7 +32,7 @@ export const Name = styled(`h3`)`
   ${mediaQueries.lg} {
     margin-left: calc(${p => p.theme.space[ICON_SIZE]} * -1.2);
   }
-`
+`;
 
 const Icon = styled(`span`)`
   display: block;
@@ -47,14 +47,14 @@ const Icon = styled(`span`)`
     stroke: ${p => p.theme.colors.lilac};
     width: ${p => p.theme.space[ICON_SIZE]};
   }
-`
+`;
 
 export const Title = styled(`h1`)`
   color: ${p => p.theme.colors.heading};
   font-size: ${p => p.theme.fontSizes[6]};
   font-weight: ${p => p.theme.fontWeights.heading};
   margin: 0;
-`
+`;
 
 const Introduction = styled(`p`)`
   color: ${p => p.theme.colors.textMuted};
@@ -62,7 +62,7 @@ const Introduction = styled(`p`)`
   font-family: ${p => p.theme.fonts.heading};
   margin: 0;
   margin-top: ${rhythm(4 / 5)};
-`
+`;
 
 const Actions = styled(`div`)`
   display: flex;
@@ -76,7 +76,7 @@ const Actions = styled(`div`)`
   ${mediaQueries.lg} {
     margin: ${p => p.theme.space[4]} 0 ${p => p.theme.space[8]};
   }
-`
+`;
 
 const HomepageSection = ({
   children,
@@ -85,7 +85,7 @@ const HomepageSection = ({
   title,
   introduction,
   links,
-  className,
+  className
 }) => (
   <section
     sx={{
@@ -98,12 +98,12 @@ const HomepageSection = ({
         my: `-1px`,
         mx: 0,
         py: 5,
-        px: `5%`,
+        px: `5%`
       },
       [mediaQueries.xxl]: {
         py: 7,
-        px: `8%`,
-      },
+        px: `8%`
+      }
     }}
     className={className}
   >
@@ -120,7 +120,7 @@ const HomepageSection = ({
         {links && (
           <Actions>
             {links.map(item => {
-              const { to, label, icon: Icon, secondary, tracking } = item
+              const { to, label, icon: Icon, secondary, tracking } = item;
 
               return (
                 <Button
@@ -132,7 +132,7 @@ const HomepageSection = ({
                 >
                   {label} {Icon && <Icon />}
                 </Button>
-              )
+              );
             })}
           </Actions>
         )}
@@ -140,7 +140,7 @@ const HomepageSection = ({
     )}
     {children}
   </section>
-)
+);
 
 HomepageSection.propTypes = {
   children: PropTypes.node.isRequired,
@@ -149,7 +149,7 @@ HomepageSection.propTypes = {
   title: PropTypes.string,
   introduction: PropTypes.string,
   links: PropTypes.array,
-  className: PropTypes.string,
-}
+  className: PropTypes.string
+};
 
-export default HomepageSection
+export default HomepageSection;

@@ -1,9 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "@emotion/styled"
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "@emotion/styled";
 
-import Button from "../button"
-import { mediaQueries } from "../../gatsby-plugin-theme-ui"
+import Button from "../button";
+import { mediaQueries } from "../../gatsby-plugin-theme-ui";
 
 const GuidesSectionRoot = styled(`section`)`
   background: ${p => p.theme.colors.card.background};
@@ -40,11 +40,11 @@ const GuidesSectionRoot = styled(`section`)`
   a {
     text-decoration: none;
   }
-`
+`;
 
 export const Header = styled(`header`)`
   align-items: flex-start;
-`
+`;
 
 const Title = styled(`h1`)`
   align-items: center;
@@ -60,13 +60,13 @@ const Title = styled(`h1`)`
   span {
     margin: 0 ${p => p.theme.space[1]} 0 0;
   }
-`
+`;
 
 const Icon = styled(`span`)`
   display: block;
   height: ${p => p.theme.space[7]};
   width: ${p => p.theme.space[7]};
-`
+`;
 
 const SubTitle = styled(`h2`)`
   color: ${p => p.theme.colors.lilac};
@@ -76,12 +76,12 @@ const SubTitle = styled(`h2`)`
   margin: 0;
   margin-top: ${p => p.theme.space[5]};
   text-transform: uppercase;
-`
+`;
 
 const Description = styled(`p`)`
   color: ${p => p.theme.colors.text};
   font-size: ${p => p.theme.fontSizes[2]};
-`
+`;
 
 const Actions = styled(`div`)`
   display: flex;
@@ -92,15 +92,9 @@ const Actions = styled(`div`)`
     margin: ${p => p.theme.space[1]} ${p => p.theme.space[2]}
       ${p => p.theme.space[1]} 0;
   }
-`
+`;
 
-const GuidesSection = ({
-  title,
-  description,
-  icon,
-  links,
-  className,
-}) => (
+const GuidesSection = ({ title, description, icon, links, className }) => (
   <GuidesSectionRoot className={className}>
     <Header>
       <Title>
@@ -110,18 +104,18 @@ const GuidesSection = ({
       <Description>{description}</Description>
       <Actions>
         {links.map(item => {
-          const { to, label, secondary } = item
+          const { to, label, secondary } = item;
 
           return (
             <Button key={to} to={to} secondary={secondary} variant="small">
               {label}
             </Button>
-          )
+          );
         })}
       </Actions>
     </Header>
   </GuidesSectionRoot>
-)
+);
 
 GuidesSection.propTypes = {
   title: PropTypes.string.isRequired,
@@ -130,7 +124,7 @@ GuidesSection.propTypes = {
   subTitle: PropTypes.string,
   icon: PropTypes.string,
   links: PropTypes.array,
-  featuredItems: PropTypes.array,
-}
+  featuredItems: PropTypes.array
+};
 
-export default GuidesSection
+export default GuidesSection;
